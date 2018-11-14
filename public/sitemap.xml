@@ -3,17 +3,45 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://donodoo.it/api/categories/</loc>
+    <loc>https://donodoo.it/main/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/authentication/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/crud/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/donors/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/subscriptions/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/campaigns/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/target/</loc>
+  </url>
+  
+  <url>
+    <loc>https://donodoo.it/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://donodoo.it/api/</loc>
+    <loc>https://donodoo.it/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://donodoo.it/api/tags/</loc>
+    <loc>https://donodoo.it/tags/</loc>
     <priority>0</priority>
   </url>
   

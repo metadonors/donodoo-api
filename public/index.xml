@@ -2,13 +2,80 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Donodoo API Documentation</title>
-    <link>https://donodoo.it/api/</link>
+    <link>https://donodoo.it/</link>
     <description>Recent content on Donodoo API Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://donodoo.it/api/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://donodoo.it/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>API Reference</title>
+      <link>https://donodoo.it/main/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/main/</guid>
+      <description>Introduzione Benvenuto nella documentazione delle API di Donodoo!
+Puoi utilizzare queste API per interagire con il tuo database in base alle regole di accesso del tuo utente.</description>
+    </item>
+    
+    <item>
+      <title>Autenticazione</title>
+      <link>https://donodoo.it/authentication/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/authentication/</guid>
+      <description> Autenticazione  Per effettuare il login, questo è il codice:
+ package main import &amp;#34;github.com/bep/kittn/auth&amp;#34; func main() { api := auth.Authorize(&amp;#34;meowmeowmeow&amp;#34;) // Just to make it compile _ = api }  Risposta
+ { &amp;#34;id&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;Max&amp;#34;, &amp;#34;breed&amp;#34;: &amp;#34;unknown&amp;#34;, &amp;#34;fluffiness&amp;#34;: 5, &amp;#34;cuteness&amp;#34;: 10 }$login Per autenticarsi con donodoo sono necessarie le seguenti informazioni
+ Nome del database Nome utente Password  </description>
+    </item>
+    
+    <item>
+      <title>CRUDL</title>
+      <link>https://donodoo.it/crud/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/crud/</guid>
+      <description> CRUD Creazione Lettura daslkdjsadas; dasl;kjdlask; ;dlaskjds;al ldaskjdl;as llkdasjl;daks Ricerca daslkdjsadas; dasl;kjdlask; ;dlaskjds;al ldaskjdl;as llkdasjl;daks Modifica daslkdjsadas; dasl;kjdlask; ;dlaskjds;al ldaskjdl;as llkdasjl;daks Cancellazione </description>
+    </item>
+    
+    <item>
+      <title>Donatori</title>
+      <link>https://donodoo.it/donors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/donors/</guid>
+      <description> Donatori </description>
+    </item>
+    
+    <item>
+      <title>Deleghe</title>
+      <link>https://donodoo.it/subscriptions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/subscriptions/</guid>
+      <description> Deleghe </description>
+    </item>
+    
+    <item>
+      <title>Campagne</title>
+      <link>https://donodoo.it/campaigns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/campaigns/</guid>
+      <description> Campagne </description>
+    </item>
+    
+    <item>
+      <title>Liste</title>
+      <link>https://donodoo.it/target/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/target/</guid>
+      <description> Liste </description>
+    </item>
     
   </channel>
 </rss>

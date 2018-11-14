@@ -6,12 +6,12 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Donodoo API Documentation</title>
-    <link href='/api/slate/stylesheets/monokai.css' rel="stylesheet" media="screen" />
-<link href='/api/slate/stylesheets/screen.css' rel="stylesheet" media="screen" />
-<link href='/api/slate/stylesheets/print.css' rel="stylesheet" media="print" />
+    <link href='/slate/stylesheets/monokai.css' rel="stylesheet" media="screen" />
+<link href='/slate/stylesheets/screen.css' rel="stylesheet" media="screen" />
+<link href='/slate/stylesheets/print.css' rel="stylesheet" media="print" />
 
     
-<script src='/api/slate/javascripts/all.js'></script>
+<script src='/slate/javascripts/all.js'></script>
 
     
 </head>
@@ -19,12 +19,12 @@
     <a href="#" id="nav-button">
         <span>
         NAV
-        <img src='/api/slate/images/navbar.png'/>
+        <img src='/slate/images/navbar.png'/>
       </span>
     </a>
     <div class="tocify-wrapper">
         
-         <img src='/api/images/logo.png' />
+         <img src='/images/logo.png' />
         
         <div class="lang-selector">
             
@@ -50,6 +50,98 @@
         <div class="dark-box"></div>
         <div class="content">
             
+    
+        
+
+<h1 id="introduzione">Introduzione</h1>
+
+<p>Benvenuto nella documentazione delle API di Donodoo!</p>
+
+<p>Puoi utilizzare queste API per interagire con il tuo database in base alle regole di accesso del tuo utente.</p>
+
+    
+        
+
+<h1 id="autenticazione">Autenticazione</h1>
+
+<blockquote>
+<p>Per effettuare il login, questo è il codice:</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">package</span> <span class="n">main</span>
+
+<span class="kn">import</span> <span class="s2">&#34;github.com/bep/kittn/auth&#34;</span>
+
+<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="n">api</span> <span class="p">:</span><span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">Authorize</span><span class="p">(</span><span class="s2">&#34;meowmeowmeow&#34;</span><span class="p">)</span>
+
+	<span class="o">//</span> <span class="n">Just</span> <span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="nb">compile</span>
+	<span class="n">_</span> <span class="o">=</span> <span class="n">api</span>
+<span class="p">}</span></code></pre></div>
+<blockquote>
+<p>Risposta</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span>
+  <span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+  <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Max&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;breed&#34;</span><span class="p">:</span> <span class="s2">&#34;unknown&#34;</span><span class="p">,</span>
+  <span class="s2">&#34;fluffiness&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+  <span class="s2">&#34;cuteness&#34;</span><span class="p">:</span> <span class="mi">10</span>
+<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$login</code></pre></div>
+<p>Per autenticarsi con donodoo sono necessarie le seguenti informazioni</p>
+
+<ul>
+<li>Nome del database</li>
+<li>Nome utente</li>
+<li>Password</li>
+</ul>
+
+    
+        
+
+<h1 id="crud">CRUD</h1>
+
+<h2 id="creazione">Creazione</h2>
+
+<h2 id="lettura">Lettura</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">daslkdjsadas</span><span class="p">;</span>
+<span class="n">dasl</span><span class="p">;</span><span class="n">kjdlask</span><span class="p">;</span>
+<span class="p">;</span><span class="n">dlaskjds</span><span class="p">;</span><span class="n">al</span>
+<span class="n">ldaskjdl</span><span class="p">;</span><span class="k">as</span>
+<span class="n">llkdasjl</span><span class="p">;</span><span class="n">daks</span></code></pre></div>
+<h2 id="ricerca">Ricerca</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">daslkdjsadas</span><span class="p">;</span>
+<span class="n">dasl</span><span class="p">;</span><span class="n">kjdlask</span><span class="p">;</span>
+<span class="p">;</span><span class="n">dlaskjds</span><span class="p">;</span><span class="n">al</span>
+<span class="n">ldaskjdl</span><span class="p">;</span><span class="k">as</span>
+<span class="n">llkdasjl</span><span class="p">;</span><span class="n">daks</span></code></pre></div>
+<h2 id="modifica">Modifica</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">daslkdjsadas</span><span class="p">;</span>
+<span class="n">dasl</span><span class="p">;</span><span class="n">kjdlask</span><span class="p">;</span>
+<span class="p">;</span><span class="n">dlaskjds</span><span class="p">;</span><span class="n">al</span>
+<span class="n">ldaskjdl</span><span class="p">;</span><span class="k">as</span>
+<span class="n">llkdasjl</span><span class="p">;</span><span class="n">daks</span></code></pre></div>
+<h2 id="cancellazione">Cancellazione</h2>
+
+    
+        
+
+<h1 id="donatori">Donatori</h1>
+
+    
+        
+
+<h1 id="deleghe">Deleghe</h1>
+
+    
+        
+
+<h1 id="campagne">Campagne</h1>
+
+    
+        
+
+<h1 id="liste">Liste</h1>
+
     
 
         </div>
