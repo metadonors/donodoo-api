@@ -2,6 +2,7 @@ baseURL = "https://donodoo.it/"
 languageCode = "it"
 title = "Donodoo API Documentation"
 theme = "docuapi"
+publishDir = "docs"
 
 # Code higlighting settings
 pygmentsCodefences = true
