@@ -36,7 +36,7 @@
          
         
         <div class="search">
-            <input type="text" class="search" id="input-search" placeholder='Search'>
+            <input type="text" class="search" id="input-search" placeholder=''>
         </div>
         <ul class="search-results"></ul>
         
@@ -62,37 +62,57 @@
     
         
 
+<h1 id="librerie">Librerie</h1>
+
+<blockquote>
+<p>Per installare la libreria</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="err">$</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">OdooRPC</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$ composer install odoo-rpc-client</code></pre></div>
+<p>Donodoo, come Odoo, espone delle API basate sui protocolli XMLRPC oppure JSONRPC. È possibile dialogare con le API tramite il meccanismo essenziale esposto nella <a href="https://www.odoo.com/documentation/10.0/api_integration.html">documentazione ufficiale di Odoo</a> anche se noi raccomandiamo di utilizzare delle librerie specifiche per semplificare l&rsquo;interfacciamento.</p>
+
+<p>Attualmente le librerie raccomandate e utilizzate in questa documentazione sono</p>
+
+<ul>
+<li><a href="https://github.com/OCA/odoorpc">OdooRPC</a>: libreria Python</li>
+<li><a href="https://github.com/metadonors/odoo-rpc-client">OdooRPCClient</a>: libreria PHP<br /></li>
+</ul>
+
+    
+        
+
 <h1 id="autenticazione">Autenticazione</h1>
 
 <blockquote>
 <p>Per effettuare il login, questo è il codice:</p>
 </blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">package</span> <span class="n">main</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">odoorpc</span>
 
-<span class="kn">import</span> <span class="s2">&#34;github.com/bep/kittn/auth&#34;</span>
+<span class="n">odoo</span> <span class="o">=</span> <span class="n">odoorpc</span><span class="o">.</span><span class="n">ODOO</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">port</span><span class="p">)</span>
 
-<span class="n">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>
-	<span class="n">api</span> <span class="p">:</span><span class="o">=</span> <span class="n">auth</span><span class="o">.</span><span class="n">Authorize</span><span class="p">(</span><span class="s2">&#34;meowmeowmeow&#34;</span><span class="p">)</span>
+<span class="n">odoo</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">database</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
 
-	<span class="o">//</span> <span class="n">Just</span> <span class="n">to</span> <span class="n">make</span> <span class="n">it</span> <span class="nb">compile</span>
-	<span class="n">_</span> <span class="o">=</span> <span class="n">api</span>
-<span class="p">}</span></code></pre></div>
-<blockquote>
-<p>Risposta</p>
-</blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="p">{</span>
-  <span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-  <span class="s2">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;Max&#34;</span><span class="p">,</span>
-  <span class="s2">&#34;breed&#34;</span><span class="p">:</span> <span class="s2">&#34;unknown&#34;</span><span class="p">,</span>
-  <span class="s2">&#34;fluffiness&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
-  <span class="s2">&#34;cuteness&#34;</span><span class="p">:</span> <span class="mi">10</span>
-<span class="p">}</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$login</code></pre></div>
-<p>Per autenticarsi con donodoo sono necessarie le seguenti informazioni</p>
+<span class="n">user</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">user</span>
+<span class="k">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>            <span class="c1"># name of the user connected</span>
+<span class="k">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">company_id</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="c1"># the name of its company</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-perl" data-lang="perl"><span class="k">use</span> <span class="nn">OdooRPCClient</span><span class="o">\</span><span class="n">Client</span><span class="p">;</span>
+
+<span class="nv">$odoo</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Client</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+
+<span class="nv">$odoo</span><span class="o">-&gt;</span><span class="n">login</span><span class="p">(</span><span class="nv">$database</span><span class="p">,</span> <span class="nv">$username</span><span class="p">,</span> <span class="nv">$password</span><span class="p">);</span>
+
+<span class="nv">$user</span> <span class="o">=</span> <span class="nv">$odoo</span><span class="o">-&gt;</span><span class="nn">env</span><span class="o">-&gt;</span><span class="n">user</span><span class="p">;</span>
+
+<span class="n">echo</span> <span class="s">&#34;{$user-&gt;name}\n&#34;</span><span class="p">;</span>
+<span class="n">echo</span> <span class="s">&#34;{$user-&gt;company_id-&gt;name}\n&#34;</span><span class="p">;</span></code></pre></div>
+<p>Prima di effettuare qualsiasi operazione tramite le API è necessario autenticarsi. Il tipo di operazioni che possono essere svolte dipendono dai permessi dell&rsquo;utente utilizzato.</p>
+
+<h2 id="login">Login</h2>
+
+<h3 id="login-database-username-password">login(database, username, password)</h3>
 
 <ul>
-<li>Nome del database</li>
-<li>Nome utente</li>
-<li>Password</li>
+<li><strong>database:</strong> database su cui autenticarsi</li>
+<li><strong>username:</strong> nome utente</li>
+<li><strong>password:</strong> password utente</li>
 </ul>
 
     
@@ -102,45 +122,364 @@
 
 <h2 id="creazione">Creazione</h2>
 
+<blockquote>
+<p>Creazione di un oggetto</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">vals</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;firstname&#39;</span><span class="p">:</span> <span class="s1">&#39;Mario&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lastname&#39;</span><span class="p">:</span> <span class="s1">&#39;Rossi&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;mario@rossi.it&#39;</span>
+<span class="p">}</span>
+
+<span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">vals</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$vals = [
+    &#39;firstname&#39; =&gt; &#39;Mario&#39;,
+    &#39;lastname&#39; =&gt; &#39;Rossi&#39;,
+    &#39;email&#39; =&gt; &#39;mario@rossi.it&#39;
+]
+
+$odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;create(vals)</code></pre></div>
+<blockquote>
+<p>Risposta</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="mi">12345</span> <span class="c1"># Id della risorsa creata</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">12345 # Id della risorsa creata</code></pre></div>
+<p>Per creare un oggetto si utilizza il metodo <em>create</em> legato a tutte le risorse Donodoo. Come parametro un dizionario con i valori dell&rsquo;oggetto da creare.</p>
+
+<h3 id="create-values">create(values)</h3>
+
+<ul>
+<li><strong>values:</strong> dizionario di valori con cui inizializzare l&rsquo;oggetto</li>
+</ul>
+
 <h2 id="lettura">Lettura</h2>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">daslkdjsadas</span><span class="p">;</span>
-<span class="n">dasl</span><span class="p">;</span><span class="n">kjdlask</span><span class="p">;</span>
-<span class="p">;</span><span class="n">dlaskjds</span><span class="p">;</span><span class="n">al</span>
-<span class="n">ldaskjdl</span><span class="p">;</span><span class="k">as</span>
-<span class="n">llkdasjl</span><span class="p">;</span><span class="n">daks</span></code></pre></div>
+
+<blockquote>
+<p>Lettura di uno o piu&rsquo; oggetti</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">donor_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">donor_id</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="n">donor_ids</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">([</span><span class="mi">12345</span><span class="p">,</span> <span class="mi">12346</span><span class="p">,</span> <span class="mi">12347</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">donor_id</span> <span class="ow">in</span> <span class="n">donor_ids</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">donor_id</span><span class="o">.</span><span class="n">name</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$donor_id = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;browse(12345);
+
+echo &#34;{$donor_id-&gt;name}\n&#34;;
+
+$donor_ids = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;browse([12345, 12346, 12347]);
+
+foreach($donor_ids as $donor_id) {
+    echo &#34;{$donor_id-&gt;name}\n&#34;;
+}</code></pre></div>
+<p>Per leggere i dati relativi ad un oggetto (o a piu&rsquo; oggetti) partendo dai loro <em>id</em> e&rsquo; possibile usare il metodo <em>browse</em></p>
+
+<h3 id="browse-id-ids">browse(id|ids)</h3>
+
+<ul>
+<li><strong>id|ids:</strong> puo&rsquo; essere un intero rappresentante un <em>id</em> di un oggetto, opppure una lista di interi per leggere piu&rsquo; oggetti in una sola chiamata</li>
+</ul>
+
 <h2 id="ricerca">Ricerca</h2>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">daslkdjsadas</span><span class="p">;</span>
-<span class="n">dasl</span><span class="p">;</span><span class="n">kjdlask</span><span class="p">;</span>
-<span class="p">;</span><span class="n">dlaskjds</span><span class="p">;</span><span class="n">al</span>
-<span class="n">ldaskjdl</span><span class="p">;</span><span class="k">as</span>
-<span class="n">llkdasjl</span><span class="p">;</span><span class="n">daks</span></code></pre></div>
+
+<blockquote>
+<p>Ricerca di oggetti</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">ids</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">search</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span><span class="s1">&#39;gmail.com&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$ids = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;search([
+    [&#39;email&#39;,&#39;like&#39;,&#39;gmail.com&#39;]
+])
+
+print_r(ids)</code></pre></div>
+<blockquote>
+<p>Risposta</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"># lista di _id_ relativi alla ricerca
+[
+    12345,
+    12346,
+    12347
+]</pre></div>
+<p>E&rsquo; possibile effettuare ricerche su un determato insieme di oggetti per farlo si ricorre al metodo <em>search</em></p>
+
+<h3 id="search-domain-limit-offset">search(domain, limit, offset)</h3>
+
+<ul>
+<li><strong>domain:</strong> esprime il dominio della ricerca, e&rsquo; una lista di tuple composte da <em>campo</em>,<em>operatore</em>,<em>valore</em></li>
+<li><strong>limit:</strong> il numero massimo di elementi da restituire nella ricerca</li>
+<li><strong>offset:</strong> l&rsquo;offset da cui partire nei risultati (utile per la paginazione)</li>
+</ul>
+
+<h2 id="ricerca-e-lettura">Ricerca e lettura</h2>
+
+<blockquote>
+<p>Ricerca e lettura di oggetti</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">ids</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">search_read</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span><span class="s1">&#39;gmail.com&#39;</span><span class="p">)</span>
+<span class="p">],</span> <span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$ids = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;search_read([
+    [&#39;email&#39;,&#39;like&#39;,&#39;gmail.com&#39;]
+], [&#39;name&#39;, &#39;email&#39;])
+
+print_r(ids)</code></pre></div>
+<blockquote>
+<p>Risposta</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># lista di _id_ relativi alla ricerca</span>
+<span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">12345</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Tizio&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;tizio@gmail.com&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">12346</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Caio&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;caio@gmail.com&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="mi">12347</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Sempronio&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;sempronio@gmail.com&#39;</span>
+    <span class="p">},</span>
+<span class="p">]</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"># lista di _id_ relativi alla ricerca
+[
+    [
+        &#39;id&#39; =&gt; 12345,
+        &#39;name&#39; =&gt; &#39;Tizio&#39;,
+        &#39;email&#39; =&gt; &#39;tizio@gmail.com&#39;
+    ],
+    [
+        &#39;id&#39; =&gt; 12346,
+        &#39;name&#39; =&gt; &#39;Caio&#39;,
+        &#39;email&#39; =&gt; &#39;caio@gmail.com&#39;
+    ],
+    [
+        &#39;id&#39; =&gt; 12347,
+        &#39;name&#39; =&gt; &#39;Sempronio&#39;,
+        &#39;email&#39; =&gt; &#39;sempronio@gmail.com&#39;
+    ],
+]</code></pre></div>
+<p>E&rsquo; possibile effettuare ricerche su un determato insieme di oggetti e farse restituire direttamente il valore di alcuni campi per diminuire il numero di richieste nessarie. Per farlo si ricorre al metodo <em>search_read</em></p>
+
+<h3 id="search-read-domain-fields-limit-offset">search_read(domain, fields, limit, offset)</h3>
+
+<ul>
+<li><strong>domain:</strong> esprime il dominio della ricerca, e&rsquo; una lista di tuple composte da <em>campo</em>,<em>operatore</em>,<em>valore</em></li>
+<li><strong>fields:</strong> lista dei campi da restituire</li>
+<li><strong>limit:</strong> il numero massimo di elementi da restituire nella ricerca</li>
+<li><strong>offset:</strong> l&rsquo;offset da cui partire nei risultati (utile per la paginazione)</li>
+</ul>
+
+<h2 id="conteggio-oggetti">Conteggio oggetti</h2>
+
+<blockquote>
+<p>Contare quanti utenti hanno una mail gmail.com</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">count</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">search_count</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;like&#39;</span><span class="p">,</span><span class="s1">&#39;gmail.com&#39;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$count = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;search_count([
+    [&#39;email&#39;,&#39;like&#39;,&#39;gmail.com&#39;]
+])
+
+print_r(icount)</code></pre></div>
+<blockquote>
+<p>Risposta</p>
+</blockquote>
+<div class="highlight"><pre class="chroma">42 # Numero di ogggetti trovati relativi al _domain_ usato</pre></div>
+<p>E&rsquo; possibile contare quanti oggetti rispondono a determinati criteri di ricerca. Per farlo si ricorre al metodo <em>search_count</em></p>
+
+<h3 id="search-count-domain">search_count(domain)</h3>
+
+<ul>
+<li><strong>domain:</strong> esprime il dominio della ricerca, e&rsquo; una lista di tuple composte da <em>campo</em>,<em>operatore</em>,<em>valore</em></li>
+</ul>
+
 <h2 id="modifica">Modifica</h2>
-<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">daslkdjsadas</span><span class="p">;</span>
-<span class="n">dasl</span><span class="p">;</span><span class="n">kjdlask</span><span class="p">;</span>
-<span class="p">;</span><span class="n">dlaskjds</span><span class="p">;</span><span class="n">al</span>
-<span class="n">ldaskjdl</span><span class="p">;</span><span class="k">as</span>
-<span class="n">llkdasjl</span><span class="p">;</span><span class="n">daks</span></code></pre></div>
+
+<blockquote>
+<p>Modificare un oggetto</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">donor_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+
+<span class="n">donor_id</span><span class="o">.</span><span class="n">write</span><span class="p">({</span>
+    <span class="s1">&#39;email&#39;</span><span class="p">:</span> <span class="s1">&#39;test@test.it&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;phone&#39;</span><span class="p">:</span> <span class="s1">&#39;0551234567s&#39;</span>
+<span class="p">})</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$donor_id = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;browse(12345)
+$donor_id-&gt;write([
+    &#39;email&#39; =&gt; &#39;test@test.it&#39;,
+    &#39;phone&#39; =&gt; &#39;0551234567s&#39;
+])</code></pre></div>
+<p>E&rsquo; possibile modificare i dati relativi ad un oggetto utilizzando il metodo <em>write</em></p>
+
+<h3 id="write-values">write(values)</h3>
+
+<ul>
+<li><strong>values:</strong> dizionario di valori con cui modificare l&rsquo;oggetto</li>
+</ul>
+
 <h2 id="cancellazione">Cancellazione</h2>
+
+<blockquote>
+<p>Eliminare definitivamente un oggetto</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">donor_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">donor_id</span><span class="o">.</span><span class="n">unlink</span><span class="p">()</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$donor_id = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;browse(12345)
+$donor_id-&gt;unlink()</code></pre></div>
+<p>E&rsquo; possibile eliminare un oggetto utilizzando il metodo <em>unlink</em></p>
+
+<h3 id="unlink">unlink()</h3>
 
     
         
 
 <h1 id="donatori">Donatori</h1>
 
+<blockquote>
+<p>Lettura di un donatore</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">donor_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.donor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$donor_id = $odoo-&gt;env[&#39;ngo.donor&#39;]-&gt;browse(12345)</code></pre></div>
+<p>L&rsquo;insieme degli oggetti donatori risponde alla risorsa <strong>ngo.donor</strong></p>
+
     
         
 
 <h1 id="deleghe">Deleghe</h1>
+
+<blockquote>
+<p>Lettura di un donatore</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">subscription_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;sale.subscription&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$subscription_id = $odoo-&gt;env[&#39;sale.subscription&#39;]-&gt;browse(12345)</code></pre></div>
+<p>L&rsquo;insieme degli oggetti deleghe risponde alla risorsa <strong>sale.subscription</strong></p>
 
     
         
 
 <h1 id="campagne">Campagne</h1>
 
+<blockquote>
+<p>Lettura di una campagna</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">campaign_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.campaign&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$campaign_id = $odoo-&gt;env[&#39;ngo.campaign&#39;]-&gt;browse(12345)</code></pre></div>
+<p>L&rsquo;insieme degli oggetti campagna risponde alla risorsa <strong>ngo.campaign</strong></p>
+
+<!-- open -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">campaign_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.campaign&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">campaign_id</span><span class="o">.</span><span class="nb">open</span><span class="p">()</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$campaign_id = $odoo-&gt;env[&#39;ngo.campaign&#39;]-&gt;browse(12345)
+$campaign_id-&gt;open()</code></pre></div>
+<h2 id="apri-campagna">Apri campagna</h2>
+
+<h3 id="open">open()</h3>
+
+<p>Sposta una campagna dallo stato <em>Bozza</em> allo stato <em>Aperto</em>. Se presenti <a href="#donatori">donatori</a> nella <a href="#liste">lista</a> assiciata crea automaticamente le <a href="#lavorazioni">lavorazioni</a> relative.</p>
+
+<!-- close -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">campaign_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.campaign&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">campaign_id</span><span class="o">.</span><span class="n">close</span><span class="p">()</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$campaign_id = $odoo-&gt;env[&#39;ngo.campaign&#39;]-&gt;browse(12345)
+$campaign_id-&gt;close()</code></pre></div>
+<h2 id="chiudi-campagna">Chiudi campagna</h2>
+
+<h3 id="close">close()</h3>
+
+<p>Sposta una campagna dallo stato <em>Aperto</em> allo stato <em>Chiuso</em>. Se presenti <a href="#lavorazioni">Lavorazioni</a> non ancora completate le annulla automaticamente.</p>
+
+<!-- add_donors_by_ids -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">campaign_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.campaign&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">campaign_id</span><span class="o">.</span><span class="n">add_donors_by_ids</span><span class="p">([</span><span class="mi">123</span><span class="p">,</span> <span class="mi">456</span><span class="p">,</span> <span class="mi">789</span><span class="p">])</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$campaign_id = $odoo-&gt;env[&#39;ngo.campaign&#39;]-&gt;browse(12345)
+$campaign_id-&gt;add_donors_by_ids([123, 456, 789])</code></pre></div>
+<h2 id="aggiungi-donatori">Aggiungi donatori</h2>
+
+<h3 id="add-donors-by-ids-ids">add_donors_by_ids(ids)</h3>
+
+<p>Aggiunge donotori alla lista legata alla campagna. Se non e&rsquo; presente la lista ne crea una di default. Se la campagna e&rsquo; in stato <em>Aperto</em> vengono automaticamente generate le lavorazioni.</p>
+
+<ul>
+<li><strong>ids:</strong> lista di <em>id</em> donatore da aggiungere alla lista della campagna</li>
+</ul>
+
+    
+        
+
+<h1 id="lavorazioni">Lavorazioni</h1>
+
+<blockquote>
+<p>Lettura di una lavorazione</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">job_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.job&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$job_id = $odoo-&gt;env[&#39;ngo.job&#39;]-&gt;browse(12345)</code></pre></div>
+<p>L&rsquo;insieme degli oggetti lavorazioni risponde alla risorsa <strong>ngo.job</strong></p>
+
     
         
 
 <h1 id="liste">Liste</h1>
+
+<blockquote>
+<p>Lettura di una lista</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">target_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$target_id = $odoo-&gt;env[&#39;ngo.target&#39;]-&gt;browse(12345)</code></pre></div>
+<p>L&rsquo;insieme degli oggetti liste risponde alla risorsa <strong>ngo.target</strong></p>
+
+<!-- add_donors_by_ids -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">target_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">target_id</span><span class="o">.</span><span class="n">add_donors_by_ids</span><span class="p">([</span><span class="mi">123</span><span class="p">,</span> <span class="mi">456</span><span class="p">,</span> <span class="mi">789</span><span class="p">])</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$target_id = $odoo-&gt;env[&#39;ngo.target&#39;]-&gt;browse(12345)
+$target_id-&gt;add_donors_by_ids([123, 456, 789])</code></pre></div>
+<h2 id="aggiungi-donatori">Aggiungi donatori</h2>
+
+<h3 id="add-donors-by-ids-ids">add_donors_by_ids(ids)</h3>
+
+<p>Aggiunge donotori alla lista.</p>
+
+<ul>
+<li><strong>ids:</strong> lista di <em>id</em> donatore da aggiungere alla lista</li>
+</ul>
+
+<!-- remove_donors_by_ids -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">target_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">target_id</span><span class="o">.</span><span class="n">remove_donors_by_ids</span><span class="p">([</span><span class="mi">123</span><span class="p">,</span> <span class="mi">456</span><span class="p">,</span> <span class="mi">789</span><span class="p">])</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$target_id = $odoo-&gt;env[&#39;ngo.target&#39;]-&gt;browse(12345)
+$target_id-&gt;remove_donors_by_ids([123, 456, 789])</code></pre></div>
+<h2 id="rimuovi-donatori">Rimuovi donatori</h2>
+
+<h3 id="remove-donors-by-ids-ids">remove_donors_by_ids(ids)</h3>
+
+<p>Rimuove donotori alla lista.</p>
+
+<ul>
+<li><strong>ids:</strong> lista di <em>id</em> donatore da rimuovere dalla lista</li>
+</ul>
+
+<!-- add_subscriptions_by_ids -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">target_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">target_id</span><span class="o">.</span><span class="n">add_subscriptions_by_ids</span><span class="p">([</span><span class="mi">123</span><span class="p">,</span> <span class="mi">456</span><span class="p">,</span> <span class="mi">789</span><span class="p">])</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$target_id = $odoo-&gt;env[&#39;ngo.target&#39;]-&gt;browse(12345)
+$target_id-&gt;add_subscriptions_by_ids([123, 456, 789])</code></pre></div>
+<h2 id="aggiungi-deleghe">Aggiungi deleghe</h2>
+
+<h3 id="add-subscriptions-by-ids-ids">add_subscriptions_by_ids(ids)</h3>
+
+<p>Aggiunge deleghe alla lista.</p>
+
+<ul>
+<li><strong>ids:</strong> lista di <em>id</em> delega da aggiungere alla lista</li>
+</ul>
+
+<!-- remove_subscriptions_by_ids -->
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">target_id</span> <span class="o">=</span> <span class="n">odoo</span><span class="o">.</span><span class="n">env</span><span class="p">[</span><span class="s1">&#39;ngo.target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">browse</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">target_id</span><span class="o">.</span><span class="n">remove_subscriptions_by_ids</span><span class="p">([</span><span class="mi">123</span><span class="p">,</span> <span class="mi">456</span><span class="p">,</span> <span class="mi">789</span><span class="p">])</span></code></pre></div><div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php">$target_id = $odoo-&gt;env[&#39;ngo.target&#39;]-&gt;browse(12345)
+$target_id-&gt;remove_subscriptions_by_ids([123, 456, 789])</code></pre></div>
+<h2 id="rimuovi-deleghe">Rimuovi deleghe</h2>
+
+<h3 id="remove-subscriptions-by-ids-ids">remove_subscriptions_by_ids(ids)</h3>
+
+<p>Rimuove deleghe alla lista.</p>
+
+<ul>
+<li><strong>ids:</strong> lista di <em>id</em> delega da rimuovere dalla lista</li>
+</ul>
 
     
 

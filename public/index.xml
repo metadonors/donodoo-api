@@ -5,7 +5,7 @@
     <link>https://donodoo.it/</link>
     <description>Recent content on Donodoo API Documentation</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <language>it</language>
     
 	<atom:link href="https://donodoo.it/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,15 +21,25 @@ Puoi utilizzare queste API per interagire con il tuo database in base alle regol
     </item>
     
     <item>
+      <title>Librerie</title>
+      <link>https://donodoo.it/librerie/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/librerie/</guid>
+      <description>Librerie  Per installare la libreria
+ $ pip install OdooRPC$ composer install odoo-rpc-client Donodoo, come Odoo, espone delle API basate sui protocolli XMLRPC oppure JSONRPC. È possibile dialogare con le API tramite il meccanismo essenziale esposto nella documentazione ufficiale di Odoo anche se noi raccomandiamo di utilizzare delle librerie specifiche per semplificare l&amp;rsquo;interfacciamento.
+Attualmente le librerie raccomandate e utilizzate in questa documentazione sono
+ OdooRPC: libreria Python OdooRPCClient: libreria PHP</description>
+    </item>
+    
+    <item>
       <title>Autenticazione</title>
       <link>https://donodoo.it/authentication/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://donodoo.it/authentication/</guid>
-      <description> Autenticazione  Per effettuare il login, questo è il codice:
- package main import &amp;#34;github.com/bep/kittn/auth&amp;#34; func main() { api := auth.Authorize(&amp;#34;meowmeowmeow&amp;#34;) // Just to make it compile _ = api }  Risposta
- { &amp;#34;id&amp;#34;: 2, &amp;#34;name&amp;#34;: &amp;#34;Max&amp;#34;, &amp;#34;breed&amp;#34;: &amp;#34;unknown&amp;#34;, &amp;#34;fluffiness&amp;#34;: 5, &amp;#34;cuteness&amp;#34;: 10 }$login Per autenticarsi con donodoo sono necessarie le seguenti informazioni
- Nome del database Nome utente Password  </description>
+      <description>Autenticazione  Per effettuare il login, questo è il codice:
+ import odoorpc odoo = odoorpc.ODOO(host, port) odoo.login(database, username, password) user = odoo.env.user print(user.name) # name of the user connected print(user.company_id.name) # the name of its companyuse OdooRPCClient\Client; $odoo = new Client($url); $odoo-&amp;gt;login($database, $username, $password); $user = $odoo-&amp;gt;env-&amp;gt;user; echo &amp;#34;{$user-&amp;gt;name}\n&amp;#34;; echo &amp;#34;{$user-&amp;gt;company_id-&amp;gt;name}\n&amp;#34;; Prima di effettuare qualsiasi operazione tramite le API è necessario autenticarsi. Il tipo di operazioni che possono essere svolte dipendono dai permessi dell&amp;rsquo;utente utilizzato.</description>
     </item>
     
     <item>
@@ -38,7 +48,9 @@ Puoi utilizzare queste API per interagire con il tuo database in base alle regol
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://donodoo.it/crud/</guid>
-      <description> CRUD Creazione Lettura daslkdjsadas; dasl;kjdlask; ;dlaskjds;al ldaskjdl;as llkdasjl;daks Ricerca daslkdjsadas; dasl;kjdlask; ;dlaskjds;al ldaskjdl;as llkdasjl;daks Modifica daslkdjsadas; dasl;kjdlask; ;dlaskjds;al ldaskjdl;as llkdasjl;daks Cancellazione </description>
+      <description>CRUD Creazione  Creazione di un oggetto
+ vals = { &amp;#39;firstname&amp;#39;: &amp;#39;Mario&amp;#39;, &amp;#39;lastname&amp;#39;: &amp;#39;Rossi&amp;#39;, &amp;#39;email&amp;#39;: &amp;#39;mario@rossi.it&amp;#39; } odoo.env[&amp;#39;ngo.donor&amp;#39;].create(vals)$vals = [ &amp;#39;firstname&amp;#39; =&amp;gt; &amp;#39;Mario&amp;#39;, &amp;#39;lastname&amp;#39; =&amp;gt; &amp;#39;Rossi&amp;#39;, &amp;#39;email&amp;#39; =&amp;gt; &amp;#39;mario@rossi.it&amp;#39; ] $odoo-&amp;gt;env[&amp;#39;ngo.donor&amp;#39;]-&amp;gt;create(vals)  Risposta
+ 12345 # Id della risorsa creata12345 # Id della risorsa creata Per creare un oggetto si utilizza il metodo create legato a tutte le risorse Donodoo. Come parametro un dizionario con i valori dell&amp;rsquo;oggetto da creare.</description>
     </item>
     
     <item>
@@ -47,7 +59,8 @@ Puoi utilizzare queste API per interagire con il tuo database in base alle regol
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://donodoo.it/donors/</guid>
-      <description> Donatori </description>
+      <description>Donatori  Lettura di un donatore
+ donor_id = odoo.env[&amp;#39;ngo.donor&amp;#39;].browse(12345)$donor_id = $odoo-&amp;gt;env[&amp;#39;ngo.donor&amp;#39;]-&amp;gt;browse(12345) L&amp;rsquo;insieme degli oggetti donatori risponde alla risorsa ngo.donor</description>
     </item>
     
     <item>
@@ -56,7 +69,8 @@ Puoi utilizzare queste API per interagire con il tuo database in base alle regol
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://donodoo.it/subscriptions/</guid>
-      <description> Deleghe </description>
+      <description>Deleghe  Lettura di un donatore
+ subscription_id = odoo.env[&amp;#39;sale.subscription&amp;#39;].browse(12345)$subscription_id = $odoo-&amp;gt;env[&amp;#39;sale.subscription&amp;#39;]-&amp;gt;browse(12345) L&amp;rsquo;insieme degli oggetti deleghe risponde alla risorsa sale.subscription</description>
     </item>
     
     <item>
@@ -65,7 +79,20 @@ Puoi utilizzare queste API per interagire con il tuo database in base alle regol
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://donodoo.it/campaigns/</guid>
-      <description> Campagne </description>
+      <description>Campagne  Lettura di una campagna
+ campaign_id = odoo.env[&amp;#39;ngo.campaign&amp;#39;].browse(12345)$campaign_id = $odoo-&amp;gt;env[&amp;#39;ngo.campaign&amp;#39;]-&amp;gt;browse(12345) L&amp;rsquo;insieme degli oggetti campagna risponde alla risorsa ngo.campaign
+campaign_id = odoo.env[&amp;#39;ngo.campaign&amp;#39;].browse(12345) campaign_id.open()$campaign_id = $odoo-&amp;gt;env[&amp;#39;ngo.campaign&amp;#39;]-&amp;gt;browse(12345) $campaign_id-&amp;gt;open() Apri campagna open() Sposta una campagna dallo stato Bozza allo stato Aperto. Se presenti donatori nella lista assiciata crea automaticamente le lavorazioni relative.
+campaign_id = odoo.env[&amp;#39;ngo.campaign&amp;#39;].browse(12345) campaign_id.close()$campaign_id = $odoo-&amp;gt;env[&amp;#39;ngo.campaign&amp;#39;]-&amp;gt;browse(12345) $campaign_id-&amp;gt;close() Chiudi campagna close() Sposta una campagna dallo stato Aperto allo stato Chiuso. Se presenti Lavorazioni non ancora completate le annulla automaticamente.</description>
+    </item>
+    
+    <item>
+      <title>Lavorazioni</title>
+      <link>https://donodoo.it/jobs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://donodoo.it/jobs/</guid>
+      <description>Lavorazioni  Lettura di una lavorazione
+ job_id = odoo.env[&amp;#39;ngo.job&amp;#39;].browse(12345)$job_id = $odoo-&amp;gt;env[&amp;#39;ngo.job&amp;#39;]-&amp;gt;browse(12345) L&amp;rsquo;insieme degli oggetti lavorazioni risponde alla risorsa ngo.job</description>
     </item>
     
     <item>
@@ -74,7 +101,11 @@ Puoi utilizzare queste API per interagire con il tuo database in base alle regol
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://donodoo.it/target/</guid>
-      <description> Liste </description>
+      <description>Liste  Lettura di una lista
+ target_id = odoo.env[&amp;#39;ngo.target&amp;#39;].browse(12345)$target_id = $odoo-&amp;gt;env[&amp;#39;ngo.target&amp;#39;]-&amp;gt;browse(12345) L&amp;rsquo;insieme degli oggetti liste risponde alla risorsa ngo.target
+target_id = odoo.env[&amp;#39;ngo.target&amp;#39;].browse(12345) target_id.add_donors_by_ids([123, 456, 789])$target_id = $odoo-&amp;gt;env[&amp;#39;ngo.target&amp;#39;]-&amp;gt;browse(12345) $target_id-&amp;gt;add_donors_by_ids([123, 456, 789]) Aggiungi donatori add_donors_by_ids(ids) Aggiunge donotori alla lista.
+ ids: lista di id donatore da aggiungere alla lista  target_id = odoo.env[&amp;#39;ngo.target&amp;#39;].browse(12345) target_id.remove_donors_by_ids([123, 456, 789])$target_id = $odoo-&amp;gt;env[&amp;#39;ngo.target&amp;#39;]-&amp;gt;browse(12345) $target_id-&amp;gt;remove_donors_by_ids([123, 456, 789]) Rimuovi donatori remove_donors_by_ids(ids) Rimuove donotori alla lista.
+ ids: lista di id donatore da rimuovere dalla lista  target_id = odoo.</description>
     </item>
     
   </channel>

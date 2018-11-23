@@ -1,18 +1,18 @@
 baseURL = "https://donodoo.it/"
-languageCode = "en-us"
+languageCode = "it"
 title = "Donodoo API Documentation"
 theme = "docuapi"
 
 # Code higlighting settings
 pygmentsCodefences = true
-pygmentsCodeFencesGuesSsyntax = false
+pygmentsCodeFencesGuesSsyntax = true
 pygmentsOptions = ""
 pygmentsStyle = "monokai"
+
 # The monokai stylesheet is included in the base template.
 pygmentsUseClasses = true
 
-defaultContentLanguage = "en"
-
+defaultContentLanguage = "it"
 
 [params]
 search = true
@@ -20,10 +20,12 @@ search = true
 # Configure the language example tabs.
 [[params.language_tabs]]
 key = "python"
-name = "Python" 
+name = "Python"
+
 [[params.language_tabs]]
 key = "php"
 name = "PHP" 
+
 
 
 

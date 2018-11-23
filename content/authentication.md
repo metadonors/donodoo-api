@@ -10,38 +10,37 @@ title: Autenticazione
 > Per effettuare il login, questo è il codice:
 
 ```python
-package main
+import odoorpc
 
-import "github.com/bep/kittn/auth"
+odoo = odoorpc.ODOO(host, port)
 
-func main() {
-	api := auth.Authorize("meowmeowmeow")
+odoo.login(database, username, password)
 
-	// Just to make it compile
-	_ = api
-}
-
-```
-
-> Risposta
-
-```python
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
+user = odoo.env.user
+print(user.name)            # name of the user connected
+print(user.company_id.name) # the name of its company
 
 ```
 
-```php
-$login
+```perl
+use OdooRPCClient\Client;
+
+$odoo = new Client($url);
+
+$odoo->login($database, $username, $password);
+
+$user = $odoo->env->user;
+
+echo "{$user->name}\n";
+echo "{$user->company_id->name}\n";
+
 ```
 
-Per autenticarsi con donodoo sono necessarie le seguenti informazioni
+Prima di effettuare qualsiasi operazione tramite le API è necessario autenticarsi. Il tipo di operazioni che possono essere svolte dipendono dai permessi dell'utente utilizzato.
 
-- Nome del database
-- Nome utente
-- Password
+## Login
+### login(database, username, password)
+
+* **database:** database su cui autenticarsi
+* **username:** nome utente
+* **password:** password utente
